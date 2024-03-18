@@ -1,0 +1,146 @@
+.cartContainer {
+    width: 35%;
+    height: 100vh;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    padding: 0.7em 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all ease-in-out .4s;
+}
+
+.open {
+    right: 0;
+}
+
+
+.closeCartBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    outline-style: none;
+    border-style: none;
+    cursor: pointer;
+    background-color: #ddd;
+    margin: 20px;
+}
+
+
+.titleContainer {
+    /* border: 1px solid green; */
+    height: 10%;
+}
+
+
+.titleContainer h3{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+
+/* CSS FOR DIV THAT CONTAINS ILLUSTRATION AND MESSAGE WHEN CART IS EMPTY */
+
+.emptyContainer {
+    /* border: 1px solid red; */
+    height: 80%;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+
+.imageContainer {
+    /* border: 2px dashed orange; */
+    height: 50%;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* border: 1px solid yellow; */
+}
+
+
+/* .messageContainer {
+    border: 2px dashed purple;
+}  */
+
+.messageContainer p{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+
+
+/* btn container */
+
+.btnContainer {
+    /* border: 2px solid brown; */
+    display: flex;
+    justify-content: center;
+}
+
+/* btn container */
+
+
+/* CSS FOR DIV THAT CONTAINS ILLUSTRATION AND MESSAGE WHEN CART IS EMPTY */
+
+
+
+
+/* CSS FOR ELEMENTS WHEN CART HAS ITEMS INSIDE */
+
+
+
+/* ITEMS CONTAINER */
+
+.itemsContainer {
+    /* border: 1px dashed red; */
+    height: 75%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 1em;
+}
+
+
+.totalBox {
+    /* border: 2px dashed green; */
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.4em 1em;
+}
+
+.totalBox div{
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid orange; */
+}
+
+.totalBox button {
+    background-color: #30D3F4;
+    border-radius: 10px;
+    outline-style: none;
+    border-style: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* CSS FOR ELEMENTS WHEN CART HAS ITEMS INSIDE */
