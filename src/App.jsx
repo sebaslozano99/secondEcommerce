@@ -4,6 +4,7 @@ import HomePage from "./pages/homepage/HomePage";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Products from "./pages/products/Products";
+import About from "./pages/about/About";
 
 
 
@@ -18,7 +19,7 @@ function App() {
             <Route path="products/:id" element={ <p>Product Page</p> } />
           </Route>
           <Route path="login" element={ <div>log in page</div> } />
-          <Route path="about" element={ <div>About</div> } />
+          <Route path="about" element={ <About /> } />
           <Route path="checkout" element={ <div>Check Out</div> } />
           <Route path="*" element={ <div>Not Found :c</div> } />
         </Routes>

@@ -1,0 +1,82 @@
+.firstDiv {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    gap: 15px;
+}
+
+
+
+.firstDiv  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    filter: blur(5px);
+}
+
+.firstDiv h2{
+    color: #fff;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.firstDiv p {
+    color: #fff;
+    text-align: center;
+    /* font-size: 1.1em; */
+    width: 75%;
+    letter-spacing: 2px;
+}
+
+.firstDiv p em{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+
+
+
+/* SECOND DIV */
+
+.secondDiv {
+    /* border: 2px dashed rebeccapurple; */
+    min-height: 90vh;
+}
+
+.secondDiv h4 {
+    /* border: 2px dashed purple; */
+    padding: 0.8em 0.8em 0.5em 2em;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.secondDiv div {
+    /* border: 10px dotted red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2em;
+    gap: 5em;
+}
+
+.secondDiv div img{
+    /* border: 5px solid green; */
+    width: 30%;
+}
+
+
+.secondDiv div p {
+    letter-spacing: 2px;
+}
+
+.secondDiv div p em {
+    font-weight: bold;
+}

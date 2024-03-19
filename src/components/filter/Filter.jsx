@@ -15,10 +15,10 @@ function maxRangeInput(dataFromApi){
 
 
 const Filter = () => {
-  const { dataFromApi, dispatch } = UseProductContext();
+  const { dataFromApi, category, dispatch } = UseProductContext();
   const ref = useRef(null);
-  const [searchParams, setSearchParams] = useSearchParams({category: "smartphones", price: "0"});
-  const category = searchParams.get("category");
+  const [searchParams, setSearchParams] = useSearchParams({category: category, price: "0"});
+  const categoryUrl = searchParams.get("category");
   const price = searchParams.get("price");
   const maxRangeInputProduct = maxRangeInput(dataFromApi);
 
@@ -38,6 +38,7 @@ const Filter = () => {
   }
 
   function onChangeCategory(e){
+
     dispatch({type: "change/category", payload: e.target.value});
     setSearchParams(prev => {
       prev.set("category", e.target.value);
@@ -56,7 +57,7 @@ const Filter = () => {
 
         <div className={styles.div} >
             <label id="category">Category</label>
-            <select id="category" value={category} onChange={(e) => onChangeCategory(e)} >
+            <select id="category" value={categoryUrl} onChange={(e) => onChangeCategory(e)} >
                 <option value="all">All</option>
                 <option value="smartphones">Smartphones</option>
                 <option value="laptops">laptops</option>

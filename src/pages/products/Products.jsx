@@ -12,7 +12,6 @@ const Products = () => {
   const price = searchParams.get("price");
   const array = Array.from({length: 7});
 
-  console.log(array)
 
   return (
     <main className={styles.main} >
@@ -29,7 +28,7 @@ const Products = () => {
 
       <div className={styles.mainDiv} >
         {
-          array.map( index => <Loading key={index} /> )
+          array.map((element, index) => <Loading key={index} /> )
         }
       </div>
     }

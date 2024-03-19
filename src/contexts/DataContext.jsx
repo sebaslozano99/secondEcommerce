@@ -61,8 +61,8 @@ function reducer(state, action){
 
 
 const DataContext = ({children}) => {
-
-  const [{dataFromApi, isLoading, cart, wishList, category, cartOpen}, dispatch ] = useReducer(reducer, initialValues);
+  
+  const [{dataFromApi, isLoading, cart, wishList, cartOpen, category}, dispatch ] = useReducer(reducer, initialValues);
 
   useEffect(() => {
     async function fetchData(){
@@ -71,7 +71,7 @@ const DataContext = ({children}) => {
             const res = await fetch(`${BASE_URL}/category/${category}`);
             const data = await res.json();
             dispatch({type: "data/arrived", payload: data.products});
-            console.log(data.products);
+            // console.log(category);
         }
         catch(error){
             throw new Error(error);
@@ -89,6 +89,7 @@ const DataContext = ({children}) => {
         cart,
         wishList,
         cartOpen,
+        category,
         dispatch,
     }}>
         {children}
