@@ -1,5 +1,6 @@
-import { UseProductContext } from "../../contexts/DataContext";
 import { useSearchParams } from "react-router-dom";
+import { UseProductContext } from "../../contexts/DataContext";
+// import { useSearchParams } from "react-router-dom";
 import styles from "./Filter.module.css";
 import { useEffect, useRef } from "react";
 
@@ -15,13 +16,16 @@ function maxRangeInput(dataFromApi){
 
 
 const Filter = () => {
-  const { dataFromApi, category, dispatch } = UseProductContext();
+  const { dataFromApi, category, dispatch} = UseProductContext();
   const ref = useRef(null);
-  const [searchParams, setSearchParams] = useSearchParams({category: category, price: "0"});
+  const [searchParams, setSearchParams] = useSearchParams({price: "0", category: category});
+  const price = searchParams.get("price") ?? 0;
   const categoryUrl = searchParams.get("category");
-  const price = searchParams.get("price");
   const maxRangeInputProduct = maxRangeInput(dataFromApi);
 
+
+
+  //When user is on a different page and on that page he's scrolled to the bottom, usually the default behavior is that when moving to a different page, it will start at the bottom as in the previous page, thus I want to scroll up automatically
   useEffect(() => {
     ref.current.scrollIntoView({
       behavior: "smooth",
@@ -38,27 +42,27 @@ const Filter = () => {
   }
 
   function onChangeCategory(e){
-
     dispatch({type: "change/category", payload: e.target.value});
     setSearchParams(prev => {
       prev.set("category", e.target.value);
       prev.set("price", 0);
       return prev;
-    }, { replace: true })
+    })
   }
 
   return (
     <form onSubmit={(e) => e.preventDefault()} ref={ref} className={styles.form} >
         <div className={styles.div} >
             <label id="price">Price</label>
-            <input id="price" type="range" min={0} max={maxRangeInputProduct} step={maxRangeInputProduct / 4} value={price} onChange={(e) => onChangePrice(e)} />
+            <input id="price" type="range" min={0} max={maxRangeInputProduct} step={maxRangeInputProduct / 4} value={Number(price)} onChange={(e) => onChangePrice(e)} />
             <span>${price}</span>
         </div>
 
         <div className={styles.div} >
             <label id="category">Category</label>
+
             <select id="category" value={categoryUrl} onChange={(e) => onChangeCategory(e)} >
-                <option value="all">All</option>
+                {/* <option value="all">All</option> */}
                 <option value="smartphones">Smartphones</option>
                 <option value="laptops">laptops</option>
                 <option value="womens-dresses">Women&apos;s Dresses</option>

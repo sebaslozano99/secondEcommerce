@@ -1,0 +1,107 @@
+.mainContainer {
+    /* border: 10px dotted red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* SLIDER CONTAINER -- RIGHT HAND */
+
+.sliderContainer {
+    width: 70%;
+    height: 100%;
+    /* border: 3px dotted red; */
+    position: relative;
+
+}
+
+.mainContainer button {
+    padding: 5px;
+    font-size: 1.3em;
+    border-radius: 50%;
+    outline-style: none;
+    border-style: none;
+    background-color: rgba(255, 255, 255, .3);
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: 50%;
+    transition: all ease-in-out .4s;
+}
+
+.mainContainer button:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, .6);
+}
+
+.next {
+    right: 0;
+}
+
+.prev {
+    left: 0;
+}
+
+
+.mainContainer .sliderContainer div {
+    /* border: 3px dotted green; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mainContainer div img{
+    /* border: 3px solid yellow; */
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+
+}
+
+/* SLIDER CONTAINER -- RIGHT HAND */
+
+
+
+
+
+
+
+.prevImages {
+    /* border: 2px solid purple; */
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.prevImages div {
+    /* border: 1px solid gold; */
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 1em;
+}
+
+.currentImage {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.prevImages div > img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}

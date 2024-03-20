@@ -1,4 +1,5 @@
 import { UseProductContext } from "../../contexts/DataContext";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,9 +11,17 @@ import { faLockOpen } from "@fortawesome/free-solid-svg-icons";
 const HomePage = () => {
 
   const { dispatch } = UseProductContext();
+  const ref = useRef();
+
+
+  useEffect(() => {
+    ref.current.scrollIntoView({
+      block: "start",
+    })
+  }, [])
 
   return (
-    <main className={styles.container} >
+    <main ref={ref} className={styles.container} >
       <div className={styles.banner} ></div>
 
       <section className={styles.sectionOne} >
@@ -58,13 +67,13 @@ const HomePage = () => {
 
         <div className={styles.divTwo}>
           <div>
-            <Link to="products?category=men-shirts" onClick={() => dispatch({type: "change/category", payload: "mens-shirts"})} >
+            <Link to="products?category=mens-shirts" onClick={() => dispatch({type: "change/category", payload: "mens-shirts"})} >
              <img src="../../public/IMAGES/mensClothing.png" alt="men's clothing" title="Men's Shirts" />
             </Link>
           </div>
 
           <div>
-            <Link to={`products?category=smartphones`} onClick={() => dispatch({type: "change/category", payload: "smartphones"}) } >
+            <Link to={`products?category=smartphones`} onClick={() => dispatch({type: "change/category", payload: "smartphones"})} >
              <img src="../../public/IMAGES/smartphonesBanner.png" alt="smartphone's banner" title="Smartphones" />
             </Link>
           </div>

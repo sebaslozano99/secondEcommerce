@@ -1,5 +1,6 @@
 import { createContext,useContext, useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
+// import { useSearchParams } from "react-router-dom";
 
 //smartphones, laptops, fragrances, skincare, groceries, home-decoration, furniture, tops, women-dresses, women-shoes, mens-shirts, mens-shoes, mens-watches, women-watches, 
 
@@ -8,12 +9,11 @@ const BASE_URL = "https://dummyjson.com/products";
 
 const initialValues = {
     dataFromApi: [],
-    cart: [],
+    cart: JSON.parse(localStorage.getItem("cart")) ?? [],
     cartOpen: false,
     wishList: [],
     isLoading: false,
-    category: "smartphones",
-
+    category: JSON.parse(localStorage.getItem("category")) ?? "smartphones",
 }
 
 
@@ -71,16 +71,19 @@ const DataContext = ({children}) => {
             const res = await fetch(`${BASE_URL}/category/${category}`);
             const data = await res.json();
             dispatch({type: "data/arrived", payload: data.products});
-            // console.log(category);
         }
         catch(error){
             throw new Error(error);
         }
     }
-
     fetchData();
   }, [category])
 
+
+  useEffect(() => {
+    window.localStorage.setItem("category", JSON.stringify(category));
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [category, cart])
 
   return (
     <ProductsContext.Provider value={{
@@ -90,7 +93,9 @@ const DataContext = ({children}) => {
         wishList,
         cartOpen,
         category,
+        // price,
         dispatch,
+        // setSearchParams,
     }}>
         {children}
     </ProductsContext.Provider>

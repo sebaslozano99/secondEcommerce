@@ -1,0 +1,150 @@
+.singleProductContainer {
+    width: 100%;
+    min-height: 90vh;
+    height: 90vh;
+    /* border: 5px dotted red; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+}
+
+
+.first{
+    /* border: 2px solid green; */
+    width: 50%;
+    height: 100%;
+}
+
+
+
+
+.second{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    height: 100%;
+    width: 40%;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 2em;
+}
+
+.second .textsContainer{
+    /* border: 4px dotted orange; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+
+
+/* CATEGORY DIV */
+
+.second .textsContainer .categoryContainer {
+    width: 40%;
+    background-color: #252525;
+    padding: 5px 10px;
+    display: grid;
+    place-items: center;
+}
+
+.second .textsContainer div h6{
+    color: #fff;
+    font-size: 1em;
+}
+
+/* CATEGORY DIV */
+
+
+
+/* TITLE CSS */
+
+
+.second .textsContainer h2 {
+    font-size: 3em;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+/* TITLE CSS */
+
+
+
+
+/* PRICE AND RAITING CONTAINER */
+
+.second  .textsContainer .priceRateContainer {
+    /* border: 1px dashed blue; */
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+
+.priceRateContainer p{
+    font-size: 2em;
+}
+
+
+.priceRateContainer em {
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+/* PRICE AND RAITING CONTAINER */
+
+
+
+
+
+
+/* DESCRIPTION CONTAINER */
+
+
+/* .descriptionContainer {
+    border: 5px dotted red;
+} */
+
+.descriptionContainer p {
+    letter-spacing: 2px;
+    font-size: 1.1em;
+}
+
+
+/* DESCRIPTION CONTAINER */
+
+
+
+
+
+/* BTN CONTAINER */
+
+.btnContainer {
+    /* border: 2px dashed brown; */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btnContainer button {
+    width: 100%;
+    padding: 10px 15px;
+    /* border-radius: 10px; */
+    outline-style: none;
+    border-style: none;
+    cursor: pointer;
+    background-color: #252525;
+    color: #fff;
+}
+
+.btnContainer em {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: .8em;
+    color: red;
+}
+
+/* BTN CONTAINER */
