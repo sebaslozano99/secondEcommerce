@@ -19,7 +19,7 @@ const GallerySlider = ({images}) => {
 
       <div className={styles.prevImages} >
         {
-          images.map((element, i) => i < 4 ?  <div  className={index === i ? styles.currentImage : null} key={element} onMouseEnter={() => setIndex(i)} >
+          images?.map((element, i) => i < 4 ?  <div  className={index === i ? styles.currentImage : null} key={element} onMouseEnter={() => setIndex(i)} >
             <img src={element} alt={element} />
           </div>
           : 

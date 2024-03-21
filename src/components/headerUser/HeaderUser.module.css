@@ -1,0 +1,49 @@
+.container {
+    width: 3.5em;
+    height: 3.5em;
+    /* border: 2px dotted red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.container img{
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+.hidden{
+    display: none;
+}
+
+.show{
+    position: absolute;
+    top: 100%;
+    width: 7em;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+}
+
+.container div button{
+    background-color: transparent;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+
+.container div button:hover {
+    background-color: #eee;
+}

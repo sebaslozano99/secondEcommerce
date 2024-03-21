@@ -1,10 +1,12 @@
 import { UseProductContext } from "../../contexts/DataContext";
 import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
-import Button from "../button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Header.module.css";
+import Button from "../button/Button";
 import Cart from "../cart/Cart";
+import HeaderUser from "../headerUser/HeaderUser";
+// import images from "../../../public/IMAGES/user-pic.jpg";
 
 const Header = () => {
 
@@ -33,13 +35,15 @@ const Header = () => {
       </nav>
 
       <div className={styles.cartBtnContainer} >
-        <Button fontSize={15} padding={5} borderRadius={5}  backgroundColor="transparent" externalFunction={dispatch} type="open-close/cart" >
+        <Button fontSize={15} padding={5} borderRadius={5}  backgroundColor="transparent" externalFunction={dispatch} type="open-close/cart" className={styles.cart} >
           <FontAwesomeIcon icon={faCartShopping} fontSize={18} />
-        </Button>
         {
           cart.length > 0 && <p>({cart.length}) </p>
         }
+        </Button>
+        <HeaderUser />
       </div>
+
       <Cart />
     </header>
   )
