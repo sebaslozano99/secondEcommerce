@@ -9,8 +9,6 @@ const BASE_URL = "https://dummyjson.com/products";
 
 const initialValues = {
     dataFromApi: [],
-    cart: JSON.parse(localStorage.getItem("cart")) ?? [],
-    cartOpen: false,
     wishList: [],
     isLoading: false,
     category: JSON.parse(localStorage.getItem("category")) ?? "smartphones",
@@ -35,25 +33,10 @@ function reducer(state, action){
                 ...state,
                 category: action.payload,
             }
-        case "open-close/cart":
+        case "wishlist/add":
             return {
                 ...state,
-                cartOpen: !state.cartOpen,
-            }
-        case "add-item/cart":
-            return {
-                ...state,
-                cart: [...state.cart, action.payload],
-            }
-        case "delete-item/cart":
-            return {
-                ...state,
-                cart: [...state.cart.filter(element => element.id !== action.payload)]
-            }
-        case "change-quantity/item":
-            return {
-                ...state,
-                cart: [...state.cart.map(element => element.id === action.payload.id ? {...element, quantity: action.payload.newQuantity} : element)]
+                wishList: state.wishList.some(element => element.id === action.payload.id) ? [...state.wishList] : [...state.wishList, action.payload.newWish]
             }
         default: throw new Error("Unknown action type!");
     }
@@ -62,7 +45,7 @@ function reducer(state, action){
 
 const DataContext = ({children}) => {
   
-  const [{dataFromApi, isLoading, cart, wishList, cartOpen, category}, dispatch ] = useReducer(reducer, initialValues);
+  const [{dataFromApi, isLoading, wishList, category}, dispatch ] = useReducer(reducer, initialValues);
 
   useEffect(() => {
     async function fetchData(){
@@ -82,26 +65,22 @@ const DataContext = ({children}) => {
 
   useEffect(() => {
     window.localStorage.setItem("category", JSON.stringify(category));
-    window.localStorage.setItem("cart", JSON.stringify(cart));
-  }, [category, cart])
+    // window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [category])
+
 
   return (
     <ProductsContext.Provider value={{
         dataFromApi,
         isLoading,
-        cart,
         wishList,
-        cartOpen,
         category,
-        // price,
         dispatch,
-        // setSearchParams,
     }}>
         {children}
     </ProductsContext.Provider>
   )
 }
-
 
 function UseProductContext(){
     const context = useContext(ProductsContext);
@@ -114,3 +93,4 @@ export { DataContext, UseProductContext }
 DataContext.propTypes = {
     children: PropTypes.node,
 }
+

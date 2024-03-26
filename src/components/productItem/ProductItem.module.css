@@ -106,6 +106,7 @@
     /* border: 2px solid red; */
     display: flex;
     justify-content: center;
+    gap: 15px;
 }
 
 .buttonContainer button {

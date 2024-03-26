@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styles from "./GallerySlider.module.css";
 import { useState } from "react";
 
-const GallerySlider = ({images}) => {
+const GallerySlider = ({images, sidePreview}) => {
 
   const [index, setIndex] = useState(0);
 
@@ -17,7 +17,7 @@ const GallerySlider = ({images}) => {
   return (
     <div className={styles.mainContainer} >
 
-      <div className={styles.prevImages} >
+      {sidePreview && <div className={styles.prevImages} >
         {
           images?.map((element, i) => i < 4 ?  <div  className={index === i ? styles.currentImage : null} key={element} onMouseEnter={() => setIndex(i)} >
             <img src={element} alt={element} />
@@ -26,9 +26,9 @@ const GallerySlider = ({images}) => {
           null
           )
         }
-      </div>
+      </div>}
 
-      <div className={styles.sliderContainer} >
+      <div className={sidePreview ? styles.sliderContainer : `${styles.sliderContainer} ${styles.sliderContainerTotal}`} >
         <button className={styles.prev} onClick={prev} >&#8592;</button>
         <div>
           <img src={images?.at(index)} alt={images?.at(index)} />
@@ -43,4 +43,5 @@ export default GallerySlider;
 
 GallerySlider.propTypes = {
   images: PropTypes.array,
+  sidePreview: PropTypes.bool,
 }

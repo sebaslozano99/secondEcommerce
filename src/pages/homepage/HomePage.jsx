@@ -1,5 +1,5 @@
 import { UseProductContext } from "../../contexts/DataContext";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef} from "react";
 import { Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +8,7 @@ import { faShieldVirus } from "@fortawesome/free-solid-svg-icons";
 import { faLockOpen } from "@fortawesome/free-solid-svg-icons";
 
 
-const HomePage = () => {
+function HomePage(){
 
   const { dispatch } = UseProductContext();
   const ref = useRef();

@@ -1,16 +1,17 @@
-import { UseProductContext } from "../../contexts/DataContext";
+import { UseCartContext } from "../../contexts/CartContext";
+import { UseIsOpenContext } from "../../contexts/IsOpen";
+import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Header.module.css";
 import Button from "../button/Button";
-import Cart from "../cart/Cart";
 import HeaderUser from "../headerUser/HeaderUser";
-// import images from "../../../public/IMAGES/user-pic.jpg";
+import Cart from "../cart/Cart";
 
-const Header = () => {
+function Header(){
 
-  const { cart, dispatch } = UseProductContext();
+  const { dispatchIsOpen } = UseIsOpenContext();
+  const { cart } = UseCartContext();
 
   return (
     <header className={styles.header} >
@@ -35,12 +36,13 @@ const Header = () => {
       </nav>
 
       <div className={styles.cartBtnContainer} >
-        <Button fontSize={15} padding={5} borderRadius={5}  backgroundColor="transparent" externalFunction={dispatch} type="open-close/cart" className={styles.cart} >
+        <Button fontSize={15} padding={5} borderRadius={5}  backgroundColor="transparent" externalFunction={dispatchIsOpen} type="open-close/cart" className={styles.cart} >
           <FontAwesomeIcon icon={faCartShopping} fontSize={18} />
         {
           cart.length > 0 && <p>({cart.length}) </p>
         }
         </Button>
+
         <HeaderUser />
       </div>
 

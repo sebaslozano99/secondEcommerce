@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 
 
-const Button = ({
+
+function Button({
     width = 0,
     padding = 0,
     margin = 0,
@@ -14,7 +15,7 @@ const Button = ({
     type = "",
     payload,
     children
-}) => {
+}) {
 
   const buttonStyles = {
     width: `${width}px`,

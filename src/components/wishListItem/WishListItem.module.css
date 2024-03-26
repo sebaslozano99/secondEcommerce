@@ -1,0 +1,35 @@
+.itemContainer {
+    border: 5px dashed blue;
+    padding: 0.8em;
+    height: 60vh;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.galleryContainer {
+    width: 60%;
+    height: 100%;
+}
+
+
+
+
+/* TEXT CONTAINER */
+
+.textContainer {
+    width: 40%;
+    height: 100%;
+    border: 2px dotted aqua;
+}
+
+.textContainer h3{
+    border: 1px solid red;
+    text-align: center;
+}
+
+/* TEXT CONTAINER */
+
+

@@ -1,13 +1,16 @@
 import styles from "./Cart.module.css";
-import { UseProductContext } from "../../contexts/DataContext";
 import Button from "../button/Button";
 import { useEffect } from "react";
 import CartItem from "../cartItem/CartItem";
+import { UseCartContext } from "../../contexts/CartContext";
+import { UseIsOpenContext } from "../../contexts/IsOpen";
 
 
 const Cart = () => {
 
-  const { cart, cartOpen, dispatch } = UseProductContext();
+  const { cartOpen, dispatchIsOpen } = UseIsOpenContext();
+  const { cart } = UseCartContext();
+  
   const totalAmount = cart.reduce((acc, curr) => {
     return curr.price * curr.quantity + acc;
   },0)
@@ -20,7 +23,7 @@ const Cart = () => {
 
   return (
     <div className={`${styles.cartContainer} ${cartOpen && styles.open}`} >
-        <button onClick={() => dispatch({type: "open-close/cart"})} className={styles.closeCartBtn} >x</button>
+        <button onClick={() => dispatchIsOpen({type: "open-close/cart"})} className={styles.closeCartBtn} >x</button>
 
         <div className={styles.titleContainer} >
             <h3>Shopping Cart</h3>
@@ -39,7 +42,7 @@ const Cart = () => {
             </div>
 
             <div className={styles.btnContainer} >
-             <Button backgroundColor="#30D3F4" padding={5} width={100} borderRadius={10} fontSize={15} externalFunction={dispatch} type="open-close/cart" >Explore</Button>
+             <Button backgroundColor="#30D3F4" padding={5} width={100} borderRadius={10} fontSize={15} externalFunction={dispatchIsOpen} type="open-close/cart" >Explore</Button>
             </div>
           </div>
 

@@ -2,15 +2,14 @@ import PropTypes from "prop-types";
 import styles from "./CartItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { UseProductContext } from "../../contexts/DataContext";
-
+import { UseCartContext } from "../../contexts/CartContext";
 const CartItem = ({productInfo}) => {
 
 
-  const { dispatch } = UseProductContext();
+  const { dispatchCart } = UseCartContext();
 
   function onChangeQuantity(e){
-    dispatch({type: "change-quantity/item", payload:{id: productInfo.id, newQuantity: e.target.value}});
+    dispatchCart({type: "change-quantity/item", payload:{id: productInfo.id, newQuantity: e.target.value}});
   }
 
   return (
@@ -32,7 +31,7 @@ const CartItem = ({productInfo}) => {
         </div>
 
         <div className={styles.trashContainer} >
-          <button onClick={() => dispatch({type: "delete-item/cart", payload: productInfo.id})} >
+          <button onClick={() => dispatchCart({type: "delete-item/cart", payload: productInfo.id})} >
            <FontAwesomeIcon icon={faTrash} fontSize={20} />
           </button>
         </div>

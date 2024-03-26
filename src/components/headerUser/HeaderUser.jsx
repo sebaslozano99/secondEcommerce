@@ -1,6 +1,6 @@
 import styles from "./HeaderUser.module.css";
 import { UseAuthContext } from "../../contexts/FakeAuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -22,8 +22,12 @@ const HeaderUser = () => {
         <img src={!isAuthenticated ? "../../../public/IMAGES/defaul.png" : user?.image} alt="../../../public/IMAGES/default.png" />
 
         <div className={isOpen ? styles.show : styles.hidden} >
-            <button>WishList</button>
-            <button onClick={onLogOut} >Log out</button>
+          <button>
+            <Link to="wishlist">
+              WishList
+            </Link>
+          </button>
+          <button onClick={onLogOut} >Log out</button>
         </div>
     </div>
   )

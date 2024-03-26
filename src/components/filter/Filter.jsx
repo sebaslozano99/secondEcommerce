@@ -1,5 +1,5 @@
-import { useSearchParams } from "react-router-dom";
 import { UseProductContext } from "../../contexts/DataContext";
+import { useSearchParams } from "react-router-dom";
 // import { useSearchParams } from "react-router-dom";
 import styles from "./Filter.module.css";
 import { useEffect, useRef } from "react";
