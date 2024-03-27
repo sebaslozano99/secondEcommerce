@@ -1,17 +1,19 @@
 .itemContainer {
-    border: 5px dashed blue;
+    /* border: 5px dashed blue; */
     padding: 0.8em;
     height: 60vh;
     width: 80%;
     display: flex;
     align-items: center;
     gap: 10px;
+    /* background-color: #eee; */
 }
 
 
 .galleryContainer {
     width: 60%;
     height: 100%;
+    /* border: 3px dotted red; */
 }
 
 
@@ -22,13 +24,91 @@
 .textContainer {
     width: 40%;
     height: 100%;
-    border: 2px dotted aqua;
+    /* border: 2px dotted aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: #eee; */
+    padding: 1em;
+    /* border-radius: 25px; */
+}
+
+
+/* TEXT CONTAINER --- FRIST DIV */
+
+.textContainer .first{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.textContainer .first div{
+    background-color: #252525;
+    color: #fff;
+    width: 25%;
+    display: grid;
+    place-items: center;
+    padding: 5px;
+    font-size: 0.8em;
 }
 
 .textContainer h3{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+/* TEXT CONTAINER --- FRIST DIV */
+
+
+
+
+
+
+
+/* TEXT CONTAINER --- SECOND DIV */
+
+
+.textContainer .secondDiv {
+    /* border: 2px dotted purple; */
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.textContainer .secondDiv p{
+    /* border: 1px dotted green; */
     text-align: center;
 }
+
+.textContainer .secondDiv .btnContainer {
+    width: 50%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btnContainer button {
+    width: 50%;
+    padding: 4px;
+    background-color: #252525;
+    color: #fff;
+    outline-style: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+
+
+/* TEXT CONTAINER --- SECOND DIV */
 
 /* TEXT CONTAINER */
 

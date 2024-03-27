@@ -5,12 +5,20 @@ import WishListItem from "../../components/wishListItem/WishListItem";
 const WishList = () => {
 
   const { wishList } = UseProductContext();
+  console.log(wishList);
 
   return (
-    <div className={styles.container} >
-        {
-            wishList.map(element => <WishListItem key={element.id} element={element}  /> )
-        }
+    <div className={wishList.length ? styles.container : styles.emptyContainer} >
+      {
+        !wishList.length ?
+
+        <div>NO ITEMS IN HERE!</div>
+
+        :
+
+        wishList.map(element => <WishListItem key={element.id} element={element}  /> )
+        
+      }
     </div>
   )
 }

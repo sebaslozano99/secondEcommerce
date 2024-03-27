@@ -9,13 +9,14 @@ import styles from "./ProductItem.module.css";
 
 
 const ProductItem = ({product}) => {
-  const { dispatch } = UseProductContext();
+  const { wishList, dispatch } = UseProductContext();
   const { cart, dispatchCart } = UseCartContext();
   const { dispatchIsOpen } = UseIsOpenContext();
+  const isAlreadyInCart = cart.some(element => element.id === product.id);
+  const isAlreadyInWishList = wishList.some(element => element.id === product.id);
 
-  function checkIfAlreadyIncluded(array, product){
-    if(array.some(element => element.id === product.id)) return;
-    dispatchCart({type: "add-item/cart", payload: {...product, quantity: 1}});
+  function checkIfAlreadyIncluded(product){
+    dispatchCart({type: "add-item/cart", payload: {id: product.id, newProduct: {...product, quantity: 1}}});
     dispatchIsOpen({type: "open-close/cart"});
   }
 
@@ -23,6 +24,8 @@ const ProductItem = ({product}) => {
 
   return (
     <div className={styles.productCard} >
+
+      
         <div className={styles.titleContainer} >
             <Link to={`${product.id}`}>
               <h2>
@@ -31,21 +34,31 @@ const ProductItem = ({product}) => {
             </Link>
         </div>
 
+
         <div className={styles.imgContainer} >
             <img src={product.images[0]} alt={product.images[0]} className={styles.img} />
         </div>
+
 
         <div className={styles.priceContainer} >
             <em className={styles.before} >${Number(product.price + product.discountPercentage).toFixed(2)}</em>
             <p className={styles.price} >${product.price}</p>
         </div>
 
+
+
         <div className={styles.buttonContainer} >
-           <button onClick={() => checkIfAlreadyIncluded(cart, product)} >add</button>
-           <button onClick={() => dispatch({type: "wishlist/add", payload: {id:product.id, newWish: product}})} >
-            <FontAwesomeIcon icon={faHeart} />
+
+           <button onClick={() => checkIfAlreadyIncluded(product)} disabled={isAlreadyInCart} style={isAlreadyInCart ? {cursor: "not-allowed"} : {}} >
+            {isAlreadyInCart ? "Added" : "Add"}
+          </button>
+
+           <button onClick={() => dispatch({type: "wishlist/add", payload: {id:product.id, newWish: product}})} style={isAlreadyInWishList ? {cursor: "not-allowed"} : {}}  >
+            <FontAwesomeIcon icon={faHeart} color={isAlreadyInWishList ? "aqua" : ""}  />
            </button>
+
         </div>
+
     </div>
   )
 }

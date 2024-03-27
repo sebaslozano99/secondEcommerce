@@ -40,7 +40,7 @@
 
 .mainContainer button:hover {
     transform: scale(1.05);
-    background-color: rgba(255, 255, 255, .6);
+    background-color: rgba(255, 203, 141, .5);
 }
 
 .next {

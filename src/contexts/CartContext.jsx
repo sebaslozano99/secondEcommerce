@@ -12,7 +12,8 @@ function reducer(state, action){
         case "add-item/cart":
             return {
                 ...state,
-                cart: [...state.cart, action.payload],
+                // cart: [...state.cart, action.payload], 
+                cart: state.cart.some(element => element.id === action.payload.id) ? [...state.cart] : [...state.cart, action.payload.newProduct]
             }
         case "delete-item/cart":
             return {

@@ -38,6 +38,11 @@ function reducer(state, action){
                 ...state,
                 wishList: state.wishList.some(element => element.id === action.payload.id) ? [...state.wishList] : [...state.wishList, action.payload.newWish]
             }
+        case "wishlist/deleteItem":
+            return {
+                ...state,
+                wishList: [...state.wishList.filter(element => element.id !== action.payload)]
+            }
         default: throw new Error("Unknown action type!");
     }
 }
