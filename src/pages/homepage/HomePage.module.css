@@ -1,6 +1,6 @@
 .container{
     width: 100%;
-    /* height: ; */
+    /* height: 100vh; */
 }
 
 .banner{
@@ -10,8 +10,19 @@
     /* background-image: url(https://pixabay.com/photos/laptop-workstation-browsing-tablet-1483974/); */
     background-repeat: no-repeat;
     background-size: cover;
-    /* border: 3px solid red; */
+    border: 3px solid red;
 }
+
+
+@media(max-width: 1000px){
+    .container{
+        height: 90%;
+    }
+    .banner{
+        background-size: contain;
+    }
+}
+
 
 
 
@@ -21,7 +32,7 @@
 
 .sectionOne {
     width: 100%;
-    height: 90vh;
+    min-height: 90vh;
     /* border: 2px dashed red; */
     padding: 2em;
     display: flex;
@@ -31,11 +42,12 @@
 }
 
 .sectionOneFirstDiv{
-    width: 60%;
+    width: 80%;
+    /* border: 2px dotted purple; */
 }
 
 .sectionOneFirstDiv h2{
-    font-size: 2.5em;
+    font-size: 3.8vw;
     color: rgb(36, 36, 36);
     font-family: "Poppins", sans-serif;
     font-weight: bold;
@@ -47,11 +59,13 @@
 .sectionOneSecondDiv{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    /* border: 5px dashed blue; */
+    width: 100%;
 }
 
 .sectionOneSecondDiv .insideDiv{
     /* border: 2px solid brown; */
-    padding: 2em;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +76,7 @@
 
 .sectionOneSecondDiv .insideDiv div{
     /* border: 1px solid red; */
-    width: 70%;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -70,20 +84,60 @@
 
 
 .sectionOneSecondDiv .insideDiv div h5{
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
+    font-weight: bold;
 }
 
 
 .icon{
-    font-size: 4em;
+    font-size: 6vw;
 }
 
 .sectionOneSecondDiv .insideDiv  p{
     text-align: center;
+  
 }
 
 /* Section One */
+
+
+
+@media (max-width: 900px){
+    .sectionOneSecondDiv{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3em;
+        margin-top: 2em;
+    }
+
+    .sectionOneFirstDiv h2{
+        font-size: 4.5vw;
+    }
+
+    .sectionOneSecondDiv .insideDiv{
+        box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+        border-radius: 25px;
+        padding: 5em;
+    }
+
+    .sectionOneSecondDiv .insideDiv div{
+        justify-content: center;
+    }
+
+    .sectionOneSecondDiv .insideDiv div h5{
+        font-size: 6vw;
+    }
+
+    .icon{
+        font-size: 10vw;
+    }
+}   
+
+
+
+
+
+
 
 
 
@@ -92,7 +146,7 @@
 .sectionTwo {
     /* border: 2px dashed red; */
     width: 100%;
-    height: 90vh;
+    min-height: 90vh;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -104,6 +158,7 @@
     font-size: 3em;
     font-weight: bold;
     color: rgb(36, 36, 36);
+    text-align: center;
 }
 
 
@@ -126,4 +181,29 @@
     width: 100%;
     object-fit: contain;
     border-radius: 25px;
+}
+
+
+@media(max-width: 900px){
+    .sectionTwo{
+        padding: 15px;
+        justify-content: center;
+    }
+
+    .sectionTwo .divTwo{
+        flex-direction: column;
+    }
+
+    .sectionTwo h2{
+        font-size: 5vw;
+        margin-bottom: 1em;
+    }
+
+    .sectionTwo .divTwo{
+        gap: 2em;
+    }
+    
+    .sectionTwo .divTwo div{
+        width: 60%;
+    }
 }

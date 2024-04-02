@@ -9,7 +9,7 @@ const BASE_URL = "https://dummyjson.com/products";
 
 const initialValues = {
     dataFromApi: [],
-    wishList: [],
+    wishList: JSON.parse(localStorage.getItem("wishList")) ?? [],
     isLoading: false,
     category: JSON.parse(localStorage.getItem("category")) ?? "smartphones",
 }
@@ -70,8 +70,9 @@ const DataContext = ({children}) => {
 
   useEffect(() => {
     window.localStorage.setItem("category", JSON.stringify(category));
+    window.localStorage.setItem("wishList", JSON.stringify(wishList));
     // window.localStorage.setItem("cart", JSON.stringify(cart));
-  }, [category])
+  }, [category, wishList])
 
 
   return (
