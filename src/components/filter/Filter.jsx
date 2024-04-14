@@ -1,7 +1,5 @@
 import { UseProductContext } from "../../contexts/DataContext";
 import { useSearchParams } from "react-router-dom";
-// import { useSearchParams } from "react-router-dom";
-import styles from "./Filter.module.css";
 import { useEffect, useRef } from "react";
 
 
@@ -51,14 +49,14 @@ const Filter = () => {
   }
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} ref={ref} className={styles.form} >
-        <div className={styles.div} >
+    <form onSubmit={(e) => e.preventDefault()} ref={ref} className="w-full flex items-center py-[10px] px-[25px] gap-[7em]" >
+        <div className="flex items-center gap-[15px]" >
             <label id="price">Price</label>
             <input id="price" type="range" min={0} max={maxRangeInputProduct} step={maxRangeInputProduct / 4} value={Number(price)} onChange={(e) => onChangePrice(e)} />
             <span>${price}</span>
         </div>
 
-        <div className={styles.div} >
+        <div className="flex items-center gap-[15px]" >
             <label id="category">Category</label>
 
             <select id="category" value={categoryUrl} onChange={(e) => onChangeCategory(e)} >

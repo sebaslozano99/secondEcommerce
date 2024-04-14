@@ -10,7 +10,7 @@ const About = () => {
 
   return (
     <div > 
-      <div className="w-full h-[90vh] flex flex-col justify-center items-center relative bg-[rgba(0,0,0,0.5)] gap-[15px] border-2  border-red-800" ref={ref} >
+      <div className="w-full h-[90vh] flex flex-col justify-center items-center relative bg-[rgba(0,0,0,0.5)] gap-[15px]" ref={ref} >
         <h2 className="text-white text-4xl font-bold">About Batt</h2>
         <p className="text-white text-center w-[75%] tracking-[2px]">Discover a world of possibilities at <em className="font-bold text-xl">Batt</em>, your premier destination for online shopping. From fashion-forward apparel to cutting-edge gadgets, we offer a curated selection of top-quality products. With secure transactions and prompt delivery, we ensure a seamless shopping experience. Join us and embark on a journey of style, convenience, and satisfaction.  </p>
         <img src="../../../public/IMAGES/dropshipping.jpg" alt="dropshipping-background" className="w-full h-full object-cover absolute z-[-1] top-0 blur-sm" />
