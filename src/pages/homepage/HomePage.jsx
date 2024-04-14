@@ -21,7 +21,7 @@ function HomePage(){
   }, [])
 
   return (
-    <main ref={ref} className={styles.container} >
+    <main ref={ref} className="w-full" >
       <div className={styles.banner} ></div>
 
       <section className={styles.sectionOne} >

@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import Form from "../../components/form/Form";
 // import { UseAuthContext } from "../contexts/FakeAuthContext";
-import styles from "./LogIn.module.css";
 
 const LogIn = () => {
 
@@ -21,7 +20,7 @@ const LogIn = () => {
   }, [])
 
   return (
-    <div ref={divRef} className={styles.logIn} >
+    <div ref={divRef} className="w-full h-[90vh] grid place-items-center" >
         <Form />
     </div>
   )
