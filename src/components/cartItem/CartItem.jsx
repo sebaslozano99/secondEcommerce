@@ -12,7 +12,7 @@ const CartItem = ({productInfo}) => {
   }
 
   return (
-    <div className="h-[8em] flex justify-between items-center border-red-400 border-2" >
+    <div className="h-[8em] flex justify-between items-center" >
         <div className="w-[30%] h-full" >
             <img src={productInfo.images[0]} alt={productInfo.images[0]} className="w-full h-full object-contain" />
         </div>

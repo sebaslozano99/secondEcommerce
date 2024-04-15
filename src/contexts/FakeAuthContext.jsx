@@ -1,61 +1,85 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 import PropTypes from "prop-types";
-import { useReducer } from "react";
-import img from "../../public/IMAGES/user-pic.jpg";
+// import img from "../../public/IMAGES/user-pic.jpg";
 
 const FakeAuth = createContext();
 
 
 const initialValues = {
-    user: null,
     isAuthenticated: false,
+    firebaseUser: {},
 }
 
 function reducer(state, action){
     switch(action.type){
+        case "isAuth": 
+            return {
+                ...state,
+                isAuthenticated: true,
+            }
+        case "getUser":
+            return {
+                ...state,
+                firebaseUser: action.payload,
+            }
         case "login":
             return {
                 ...state,
-                user: action.payload,
+                // user: action.payload, 
                 isAuthenticated: true,
             }
         case "logout":
             return {
                 ...state,
-                user: null,
                 isAuthenticated: false,
+                firebaseUser: {},
             }
         default: throw new Error("Unknown action type");
     }
 }
 
-const FAKE_USER = {
-    name: "Rick Grimes",
-    email: "rickG@yahoo.com",
-    password: "twd2010_",
-    image: img,
-}
+
 
 const FakeAuthContext = ({children}) => {
 
-  const [{user, isAuthenticated}, dispatch] = useReducer(reducer, initialValues);
-  
-  function login(email, password) {
-    if(email === FAKE_USER.email && password === FAKE_USER.password){
-        dispatch({type: "login", payload: FAKE_USER});
-    }
-  }
+  const [{firebaseUser, isAuthenticated}, dispatch] = useReducer(reducer, initialValues);
 
-  function logout(){
-    dispatch({type: "logout"});
-  }
+    function createUser(email, password){
+        dispatch({type: "isAuth"});
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+  
+    function login(email, password) {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    function logout(){
+        dispatch({type: "logout"});
+        return signOut(auth);
+    }
+
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        if(isAuthenticated) dispatch({type: "getUser", payload: currentUser});
+    });
+
+    return () => {
+        unsubscribe();
+    }
+  }, [isAuthenticated])
 
   return (
     <FakeAuth.Provider value={{
-        user,
+        firebaseUser,
         isAuthenticated,
         login,
-        logout
+        logout,
+        createUser,
+        dispatch
     }}>
         {children}
     </FakeAuth.Provider>

@@ -20,6 +20,7 @@ import FullPageSpinner from "./components/fullPageSpinner/FullPageSpinner";
 const About = lazy(() => import("./pages/about/About"));
 const SingleProduct = lazy(() => import("./pages/singleProduct/SingleProduct"));
 const LogIn = lazy(() => import("./pages/login/LogIn"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage"));
 const HomePage = lazy(() => import("./pages/homepage/HomePage"));
 const Products = lazy(() => import("./pages/products/Products"));
 const WishList = lazy(() => import("./pages/wishList/WishList"));
@@ -40,6 +41,7 @@ function App() {
                   <Route path="products" element={ <Products /> } />
                   <Route path="products/:id" element={ <SingleProduct /> } />
                   <Route path="login" element={ <LogIn /> } />
+                  <Route path="signup" element={ <SignUpPage /> } />
                   <Route path="about" element={ <About /> } />
                   <Route path="wishlist" element={ <WishList /> } />
                   <Route path="checkout" element={ <div>Check Out</div> } />
