@@ -34,6 +34,10 @@ const CartContext = ({children}) => {
   const [{cart}, dispatchCart] = useReducer(reducer, initialValue);
 
   useEffect(() => {
+    console.log(cart);
+  }, [cart])
+
+  useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart))
   }, [cart])
 

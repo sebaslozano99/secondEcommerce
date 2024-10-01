@@ -1,24 +1,42 @@
 import { UseProductContext } from "../../contexts/DataContext";
 import { UseIsOpenContext } from "../../contexts/IsOpen";
 import { UseCartContext } from "../../contexts/CartContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./SingleProduct.module.css";
 import GallerySlider from "../../components/gallerySlider/GallerySlider";
+import { UseAuthContext } from "../../contexts/FakeAuthContext";
 
 
 
 const SingleProduct = () => {
 
+  const navigate = useNavigate();
   const { dataFromApi } = UseProductContext();
-  const { dispatchIsOpen } = UseIsOpenContext();
-  const { cart, dispatchCart } = UseCartContext();
   const { id } = useParams();
   const [singleProduct] = dataFromApi.filter(element => element.id === Number(id) && element); //de-structured the array
+  const { dispatchIsOpen } = UseIsOpenContext();
+  const { cart, dispatchCart } = UseCartContext();
+  const { isAuthenticated } = UseAuthContext();
+  const isAlreadyInCart = cart.some(element => element.id === singleProduct.id);
 
-  function checkIfAlreadyIncluded(array, product){
-    if(array.some(element => element.id === product.id)) return;
-    dispatchCart({type: "add-item/cart", payload: {...product, quantity: 1}});
-    dispatchIsOpen({type: "open-close/cart"});
+
+  // console.log(cart.some(element => element.id === singleProduct.id));
+
+  function checkIfAlreadyIncluded(product){
+
+    //if product is already included in the cart, do nothing, else add it and open cart
+    if(isAuthenticated) {
+
+      if(isAlreadyInCart) return;
+
+      dispatchCart({type: "add-item/cart", payload: {id: product.id, newProduct: {...product, quantity: Number(1)}}});
+      dispatchIsOpen({type: "open-close/cart"});
+
+    }
+    else{
+      navigate("/login");
+    }
+
   }
 
   return (
@@ -51,7 +69,7 @@ const SingleProduct = () => {
           </div>
 
           <div className={styles.btnContainer} >
-            <button onClick={() => checkIfAlreadyIncluded(cart, singleProduct)} >ADD</button>
+            <button onClick={() => checkIfAlreadyIncluded(singleProduct)} style={isAlreadyInCart && {cursor: "not-allowed"}} >{isAlreadyInCart ? "ADDED" : "ADD"}</button>
             <em>Only {singleProduct?.stock} in stock!</em>
           </div>
 

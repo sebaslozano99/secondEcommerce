@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 
 
 const ProductItem = ({product}) => {
+
   const { wishList, dispatch } = UseProductContext();
   const { cart, dispatchCart } = UseCartContext();
   const { dispatchIsOpen } = UseIsOpenContext();
@@ -19,8 +20,9 @@ const ProductItem = ({product}) => {
   
 
   function checkIfAlreadyIncluded(product){
+
     if(isAuthenticated){
-      dispatchCart({type: "add-item/cart", payload: {id: product.id, newProduct: {...product, quantity: 1}}});
+      dispatchCart({type: "add-item/cart", payload: {id: product.id, newProduct: {...product, quantity: Number(1)}}});
       dispatchIsOpen({type: "open-close/cart"});
     }
     else{
@@ -28,6 +30,7 @@ const ProductItem = ({product}) => {
     }
 
   }
+
 
   function onAddWishList(){
     if(isAuthenticated) {

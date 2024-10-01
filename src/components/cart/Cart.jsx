@@ -9,15 +9,16 @@ const Cart = () => {
 
   const { cartOpen, dispatchIsOpen } = UseIsOpenContext();
   const { cart } = UseCartContext();
-  const totalAmount = cart.reduce((acc, curr) => {
-    return curr.price * curr.quantity + acc;
-  },0);
+  const totalAmount = cart?.reduce((acc, curr) => {
+    return curr?.price * curr?.quantity + acc;
+  }, 0);
   const baseStyle = "w-[35%] h-screen bg-white absolute top-0 flex flex-col py-[0.7em] shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-all ease-in-out duration-500 max-[700px]:w-full max-[900px]:w-[50%] max-[2000px]:w-[35%]"
 
   useEffect(() => {
     const root = document.querySelector("body");
     root.classList.toggle("hide");
   }, [cartOpen])
+
 
 
   return (
@@ -55,7 +56,7 @@ const Cart = () => {
           <>
             <div className="flex flex-col h-[75%] overflow-y-auto gap-4 p-4 divide-solid divide-y-2" >
               {
-                cart.map(element => <CartItem key={element.id} productInfo={element} /> )
+                cart?.map(element => <CartItem key={element?.id} productInfo={element} /> )
               }
             </div>
 

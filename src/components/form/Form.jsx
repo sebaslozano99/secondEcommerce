@@ -40,7 +40,7 @@ const Form = () => {
     if(error){
       setTimeout(() => {
         setError("");
-      }, 2000)
+      }, 5000)
     }
   }, [error])
 
